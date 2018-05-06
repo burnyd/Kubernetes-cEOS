@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ceos
+  namespace: default
+spec:
+  containers:
+  - name: ceos
+    image: ceosimage:4.20.5F
+    env: 
+    - name: container
+      value: docker
+    - name: EOS_PLATFORM
+      value: Docker
+    - name: INTFTYPE
+      value: eth
+    command: [ "/sbin/init" ]
+    securityContext:
+      privileged: true
+
